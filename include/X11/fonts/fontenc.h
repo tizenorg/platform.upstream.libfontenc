@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-/* $XFree86: xc/lib/font/include/fontenc.h,v 1.8 2001/08/13 21:46:48 dawes Exp $ */
+/* $XFree86$ */
 
 /* Header for backend-independent encoding code */
 

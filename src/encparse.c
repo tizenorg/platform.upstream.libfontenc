@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-/* $XFree86: xc/lib/font/fontfile/encparse.c,v 1.20 2004/02/11 21:11:19 dawes Exp $ */
+/* $XFree86$ */
 
 /* Parser for encoding files */
 
