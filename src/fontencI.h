@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-/* $XFree86$ */
+/* $XFree86: xc/lib/font/fontfile/fontencI.h,v 1.4 2001/08/13 21:46:47 dawes Exp $ */
 
 /* Private types and functions for the encoding code. */
 /* Used by the files `fontenc.h' and `encparse.h' */
