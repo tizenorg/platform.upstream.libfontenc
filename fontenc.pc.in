@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: fontenc
+Description: The fontenc Library
+Version: @PACKAGE_VERSION@
+Cflags: -I${includedir} @DEP_CFLAGS@
+Libs: -L${libdir} -lfontenc @DEP_LIBS@
+
