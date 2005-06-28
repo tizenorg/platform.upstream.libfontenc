@@ -8,7 +8,8 @@ libfontenc_la_SOURCES = \
 FONTDIR=${libdir}/X11/fonts
 FONTENCDEFS = -DFONT_ENCODINGS_DIRECTORY=\"$(FONTDIR)/encodings/encodings.dir\"
 
-INCLUDES = -I$(top_srcdir)/include/X11/fonts -DFONTENC_NO_LIBFONT $(FONTENCDEFS)
+INCLUDES = -I$(top_srcdir)/include/X11/fonts		\
+	   -DFONTENC_NO_LIBFONT $(FONTENCDEFS)
 
 
 libfontenc_la_LIBADD = @DEP_LIBS@
