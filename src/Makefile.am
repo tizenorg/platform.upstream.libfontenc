@@ -2,7 +2,8 @@ lib_LTLIBRARIES = libfontenc.la
 
 libfontenc_la_SOURCES = \
          encparse.c \
-         fontenc.c
+         fontenc.c \
+	 fontencI.h
 
 FONTDIR=${libdir}/X11/fonts
 FONTENCDEFS = -DFONT_ENCODINGS_DIRECTORY=\"$(FONTDIR)/encodings/encodings.dir\"

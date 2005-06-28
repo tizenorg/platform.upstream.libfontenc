@@ -33,6 +33,22 @@ AM_CONFIG_HEADER(config.h)
 AC_PROG_CC
 AC_PROG_LIBTOOL
 
+# mkfontscale
+
+AC_PATH_PROG(MKFONTSCALE, mkfontscale)
+if [[ -z $MKFONTSCALE ]]; then
+   AC_MSG_ERROR([mkfontscale is needed to build fontenc. FIXME: when we
+		 know where it is going to live, put a more informative
+		 comment here])
+fi
+
+# gzip
+
+AC_PATH_PROG(GZIP, gzip)
+if [[ -z $GZIP ]]; then
+   AC_MSG_ERROR([gzip is needed to compress font encodings])
+fi
+
 # Check for dependencies
 PKG_CHECK_MODULES(DEP, x11)
 
@@ -40,5 +56,7 @@ AC_SUBST(DEP_CFLAGS)
 AC_SUBST(DEP_LIBS)
 		  
 AC_OUTPUT([Makefile
+	   encodings/Makefile
+	   encodings/large/Makefile
 	   src/Makefile
            fontenc.pc])
