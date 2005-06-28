@@ -1,4 +1,4 @@
-encodingsdir = $(libdir)/X11/fonts/encodings
+encodingsdir = $(libdir)/X11/fonts/encodings/large
 
 ENCODING_FILES =		\
 	big5.eten-0.enc		\
@@ -25,5 +25,8 @@ COMPRESSED = $(foreach FILE, $(ENCODING_FILES), $(FILE).gz)
 $(COMPRESSED): %.enc.gz: %.enc
 	@GZIP@ -c < $< > $@
 
-encodings_DATA = $(COMPRESSED)
-CLEANFILES = $(COMPRESSED)
+encodings.dir:
+	@MKFONTSCALE@ -b -s -l -n -r -p $(encodingsdir) -e . .
+
+encodings_DATA = $(COMPRESSED) encodings.dir
+CLEANFILES = $(COMPRESSED) encodings.dir
