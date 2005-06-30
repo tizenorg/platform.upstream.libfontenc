@@ -49,6 +49,10 @@ if [[ -z $GZIP ]]; then
    AC_MSG_ERROR([gzip is needed to compress font encodings])
 fi
 
+# zlib
+
+AC_CHECK_LIB(z, gzclose) 
+
 # Check for dependencies
 PKG_CHECK_MODULES(DEP, x11)
 
