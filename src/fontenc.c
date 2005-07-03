@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-/* $XdotOrg: xc/lib/font/fontfile/fontenc.c,v 1.16 2003/12/19 02:05:38 dawes Exp $ */
+/* $XdotOrg: xc/lib/font/fontfile/fontenc.c,v 1.2 2004/04/23 18:44:21 eich Exp $ */
 /* $XFree86: xc/lib/font/fontfile/fontenc.c,v 1.15 2003/02/20 03:25:19 dawes Exp $ */
 
 /* Backend-independent encoding code */
@@ -33,8 +33,8 @@ THE SOFTWARE.
 
 #ifndef FONTENC_NO_LIBFONT
 
-#include "fontmisc.h"           /* defines xalloc and friends */
-#include "fntfilst.h"
+#include <X11/fonts/fontmisc.h>           /* defines xalloc and friends */
+#include <X11/fonts/fntfilst.h>
 
 #else
 
@@ -49,7 +49,7 @@ THE SOFTWARE.
 
 #endif /* FONTENC_NO_FONTFILE */
 
-#include "fontenc.h"
+#include <X11/fonts/fontenc.h>
 #include "fontencI.h"
 
 /* Functions local to this file */
