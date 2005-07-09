@@ -1,3 +1,14 @@
+2005-07-09  Keith Packard  <keithp@keithp.com>
+
+	* .cvsignore:
+	* encodings/.cvsignore:
+	* encodings/large/.cvsignore:
+	* src/.cvsignore:
+	Add .cvsignore files
+	
+	* configure.ac:
+	Depend on xproto, not x11 so we do not link against -X11
+
 2005-06-30  Alexander Gottwald  <ago at freedesktop dot org>
 
 	* configure.ac:

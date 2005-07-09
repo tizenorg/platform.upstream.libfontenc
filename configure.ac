@@ -54,7 +54,7 @@ fi
 AC_CHECK_LIB(z, gzclose) 
 
 # Check for dependencies
-PKG_CHECK_MODULES(DEP, x11)
+PKG_CHECK_MODULES(DEP, xproto)
 
 AC_SUBST(DEP_CFLAGS)
 AC_SUBST(DEP_LIBS)
