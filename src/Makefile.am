@@ -14,8 +14,7 @@ INCLUDES = -I$(top_srcdir)/include \
 
 libfontenc_la_LIBADD = @DEP_LIBS@
 
-libfontenc_la_LDFLAGS = -version-info 7:0:0 -no-undefined
-
+libfontenc_la_LDFLAGS = -version-number 1:0:0 -no-undefined
 
 libfontencincludedir = $(includedir)/X11/fonts
 libfontencinclude_HEADERS = \
