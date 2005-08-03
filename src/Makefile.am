@@ -12,7 +12,7 @@ INCLUDES = -I$(top_srcdir)/include \
 	   -DFONTENC_NO_LIBFONT $(FONTENCDEFS)
 
 
-libfontenc_la_LIBADD = @DEP_LIBS@
+libfontenc_la_LIBADD = @FONTENC_LIBS@
 
 libfontenc_la_LDFLAGS = -version-number 1:0:0 -no-undefined
 
