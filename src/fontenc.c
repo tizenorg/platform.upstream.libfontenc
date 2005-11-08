@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 #include <string.h>
 
-#ifdef SCO325
+#if defined(__SCO__) || defined(__UNIXWARE__)
 #include <strings.h>
 #endif
 
