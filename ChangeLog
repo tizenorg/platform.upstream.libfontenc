@@ -1,3 +1,10 @@
+2005-12-09  Kevin E. Martin  <kem-at-freedesktop-dot-org>
+
+	* configure.ac:
+	* src/Makefile.am:
+	Bug #5175: Make encodingsdir configurable (David Coulthart and
+	Kevin E. Martin)
+
 2005-12-03  Kevin E. Martin  <kem-at-freedesktop-dot-org>
 
 	* configure.ac:

@@ -33,6 +33,15 @@ AM_CONFIG_HEADER(config.h)
 AC_PROG_CC
 AC_PROG_LIBTOOL
 
+m4_ifdef([AS_HELP_STRING], , [m4_define([AS_HELP_STRING], m4_defn([AC_HELP_STRING]))])
+
+DEFAULT_ENCODINGSDIR=${libdir}/X11/fonts/encodings
+AC_ARG_WITH(encodingsdir,
+	AS_HELP_STRING([--with-encodingsdir=ENCODINGSDIR], [Path to font encodings]),
+	[ENCODINGSDIR="$withval"],
+	[ENCODINGSDIR="$DEFAULT_ENCODINGSDIR"])
+AC_SUBST(ENCODINGSDIR)
+
 # zlib
 
 AC_CHECK_LIB(z, gzclose) 

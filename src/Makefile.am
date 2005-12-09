@@ -5,8 +5,8 @@ libfontenc_la_SOURCES = \
          fontenc.c \
 	 fontencI.h
 
-FONTDIR=${libdir}/X11/fonts
-FONTENCDEFS = -DFONT_ENCODINGS_DIRECTORY=\"$(FONTDIR)/encodings/encodings.dir\"
+FONTENCDIR=@ENCODINGSDIR@
+FONTENCDEFS = -DFONT_ENCODINGS_DIRECTORY=\"$(FONTENCDIR)/encodings.dir\"
 
 INCLUDES = -I$(top_srcdir)/include \
 	   -DFONTENC_NO_LIBFONT $(FONTENCDEFS)
