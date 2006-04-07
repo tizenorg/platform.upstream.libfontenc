@@ -867,8 +867,10 @@ FontEncReallyReallyLoad(const char *charset,
         if(!strcasecmp(encoding_name, charset)) {
             /* Found it */
             if(file_name[0] != '/') {
-                if(strlen(dir) + strlen(file_name) >= MAXFONTFILENAMELEN)
+                if(strlen(dir) + strlen(file_name) >= MAXFONTFILENAMELEN) {
+		    fclose(file);
                     return NULL;
+		}
                 strcpy(buf, dir);
                 strcat(buf, file_name);
             } else {

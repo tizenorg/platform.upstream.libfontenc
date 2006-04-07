@@ -1,3 +1,8 @@
+2006-04-06  Adam Jackson  <ajax@freedesktop.org>
+
+	* src/encparse.c:
+	Coverity #544: File a file descriptor leak.
+
 2005-12-20  Kevin E. Martin  <kem-at-freedesktop-dot-org>
 
 	* configure.ac:
