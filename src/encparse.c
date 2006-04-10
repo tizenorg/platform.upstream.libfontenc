@@ -1,3 +1,4 @@
+/* $XdotOrg: $ */
 /*
 Copyright (c) 1998-2001 by Juliusz Chroboczek
 
@@ -879,6 +880,7 @@ FontEncReallyReallyLoad(const char *charset,
 
             f = FontFileOpen(buf);
             if(f == NULL) {
+		fclose(file);		
                 return NULL;
             }
             encoding = parseEncodingFile(f, 0);

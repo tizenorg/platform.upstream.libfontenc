@@ -1,3 +1,8 @@
+2006-04-10  Alan Coopersmith  <alan.coopersmith@sun.com>
+
+	* src/encparse.c (FontEncReallyReallyLoad): 
+	Fix another file descriptor leak (related to previous Coverity #544)
+
 2006-04-06  Adam Jackson  <ajax@freedesktop.org>
 
 	* src/encparse.c:
