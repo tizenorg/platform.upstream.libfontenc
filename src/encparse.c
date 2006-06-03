@@ -1,4 +1,4 @@
-/* $XdotOrg: $ */
+/* $XdotOrg: lib/fontenc/src/encparse.c,v 1.6 2006/04/10 16:15:12 alanc Exp $ */
 /*
 Copyright (c) 1998-2001 by Juliusz Chroboczek
 
@@ -773,12 +773,14 @@ error:
         xfree(mapping);
     }
     if(encoding) {
-        if(encoding->name) xfree(encoding->name);
-    for(mapping = encoding->mappings; mapping; mapping = mapping->next) {
-        if(mapping->client_data) xfree(mapping->client_data);
-        xfree(mapping);
-    }
-    xfree(encoding);
+	FontMapPtr nextmap;
+	if (encoding->name) xfree(encoding->name);
+	for (mapping = encoding->mappings; mapping; mapping = nextmap) {
+	    if (mapping->client_data) xfree(mapping->client_data);
+	    nextmap = mapping->next;
+	    xfree(mapping);
+	}
+	xfree(encoding);
     }
     for(i = 0; i < numaliases; i++)
         xfree(aliases[i]);
