@@ -548,10 +548,10 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
             mapping->type = FONT_ENCODING_UNICODE;
             mapping->pid = 0;
             mapping->eid = 0;
-            mapping->recode = 0;
-            mapping->name = 0;
-            mapping->client_data = 0;
-            mapping->next = 0;
+            mapping->recode = NULL;
+            mapping->name = NULL;
+            mapping->client_data = NULL;
+            mapping->next = NULL;
             goto mapping;
         } else if(!strcasecmp(keyword_value, "cmap")) {
             mapping = (FontMapPtr)xalloc(sizeof(FontMapRec));
@@ -560,10 +560,10 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
             mapping->type = FONT_ENCODING_TRUETYPE;
             mapping->pid = value1;
             mapping->eid = value2;
-            mapping->recode = 0;
-            mapping->name = 0;
-            mapping->client_data = 0;
-            mapping->next = 0;
+            mapping->recode = NULL;
+            mapping->name = NULL;
+            mapping->client_data = NULL;
+            mapping->next = NULL;
             goto mapping;
         } else if(!strcasecmp(keyword_value, "postscript")) {
             mapping = (FontMapPtr)xalloc(sizeof(FontMapRec));
@@ -572,10 +572,10 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
             mapping->type = FONT_ENCODING_POSTSCRIPT;
             mapping->pid = 0;
             mapping->eid = 0;
-            mapping->recode = 0;
-            mapping->name = 0;
-            mapping->client_data = 0;
-            mapping->next = 0;
+            mapping->recode = NULL;
+            mapping->name = NULL;
+            mapping->client_data = NULL;
+            mapping->next = NULL;
             goto string_mapping;
         } else {                /* unknown mapping type -- ignore */
             goto skipmapping;
@@ -621,12 +621,12 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
         } else {
             sm->first = 0;
             sm->len = 0;
-            sm->map = 0;
+            sm->map = NULL;
         }
         for(i=0; i < sm->len; i++)
             sm -> map[i] = enc[first+i];
         install_mapping(encoding, mapping);
-        mapping = 0;
+        mapping = NULL;
         first = 0xFFFF; last=0;
         goto no_mapping;
 
@@ -702,7 +702,7 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
         for(i = 0; i < sn->len; i++)
             sn->map[i] = nam[first+i];
         install_mapping(encoding,mapping);
-        mapping = 0;
+        mapping = NULL;
         first = 0xFFFF; last=0;
         goto no_mapping;
     case NAME_LINE:
@@ -785,7 +785,7 @@ error:
     for(i = 0; i < numaliases; i++)
         xfree(aliases[i]);
     /* We don't need to free sn and sm as they handled locally in the body.*/
-    return 0;
+    return NULL;
 }
 
 char*
@@ -961,7 +961,7 @@ FontEncIdentify(const char *fileName)
     for(alias = encoding->aliases; *alias; alias++, name++)
         *name = *alias;
 
-    *name = 0;
+    *name = NULL;
     xfree(encoding->aliases);
     xfree(encoding);
 

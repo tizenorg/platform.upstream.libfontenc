@@ -64,8 +64,8 @@ static FontEncPtr FontEncLoad(const char*, const char*);
 
 static FontMapRec iso10646[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,0,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,NULL,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 /* Notice that the Apple encodings do not have all the characters in
@@ -102,10 +102,10 @@ iso8859_1_to_apple_roman(unsigned isocode, void *client_data)
 
 static FontMapRec iso8859_1[]=
 {
-    {FONT_ENCODING_TRUETYPE,2,2,0,0,0,0}, /* ISO 8859-1 */
-    {FONT_ENCODING_UNICODE,0,0,0,0,0,0}, /* ISO 8859-1 coincides with Unicode*/
-    {FONT_ENCODING_TRUETYPE,1,0,iso8859_1_to_apple_roman,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_TRUETYPE,2,2,NULL,NULL,NULL,NULL,NULL}, /* ISO 8859-1 */
+    {FONT_ENCODING_UNICODE,0,0,NULL,NULL,NULL,NULL,NULL}, /* ISO 8859-1 coincides with Unicode*/
+    {FONT_ENCODING_TRUETYPE,1,0,iso8859_1_to_apple_roman,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned short iso8859_2_tophalf[]=
@@ -154,9 +154,9 @@ iso8859_2_to_apple_centeuro(unsigned isocode, void *client_data)
 static FontMapRec iso8859_2[]=
 {
     {FONT_ENCODING_UNICODE,0,0,
-     FontEncSimpleRecode,0,&iso8859_2_to_unicode_map,0},
-    {FONT_ENCODING_TRUETYPE,1,29,iso8859_2_to_apple_centeuro,0,0,0},
-    {0,0,0,0,0,0,0}
+     FontEncSimpleRecode,NULL,&iso8859_2_to_unicode_map,NULL,NULL},
+    {FONT_ENCODING_TRUETYPE,1,29,iso8859_2_to_apple_centeuro,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned short iso8859_3_tophalf[]=
@@ -179,8 +179,8 @@ static FontEncSimpleMapRec iso8859_3_to_unicode_map=
 static FontMapRec iso8859_3[]=
 {
     {FONT_ENCODING_UNICODE,0,0,
-     FontEncSimpleRecode,0,&iso8859_3_to_unicode_map,0},
-    {0,0,0,0,0,0,0}
+     FontEncSimpleRecode,NULL,&iso8859_3_to_unicode_map,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 
@@ -204,9 +204,9 @@ static FontEncSimpleMapRec iso8859_4_to_unicode_map=
 
 static FontMapRec iso8859_4[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,0,
-     &iso8859_4_to_unicode_map,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,NULL,
+     &iso8859_4_to_unicode_map,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned short iso8859_5_tophalf[]=
@@ -253,10 +253,10 @@ iso8859_5_to_apple_cyrillic(unsigned isocode, void *client_data)
 
 static FontMapRec iso8859_5[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,0,
-     &iso8859_5_to_unicode_map,0},
-    {FONT_ENCODING_TRUETYPE,1,7,iso8859_5_to_apple_cyrillic,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,NULL,
+     &iso8859_5_to_unicode_map,NULL,NULL},
+    {FONT_ENCODING_TRUETYPE,1,7,iso8859_5_to_apple_cyrillic,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 /* ISO 8859-6 seems useless for serving fonts (not enough presentation
@@ -278,8 +278,8 @@ iso8859_6_to_unicode(unsigned isocode, void *client_data)
 
 static FontMapRec iso8859_6[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,iso8859_6_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,iso8859_6_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned 
@@ -304,8 +304,8 @@ iso8859_7_to_unicode(unsigned isocode, void *client_data)
 
 static FontMapRec iso8859_7[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,iso8859_7_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,iso8859_7_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned
@@ -325,8 +325,8 @@ iso8859_8_to_unicode(unsigned isocode, void *client_data)
 
 static FontMapRec iso8859_8[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,iso8859_8_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,iso8859_8_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned
@@ -345,8 +345,8 @@ iso8859_9_to_unicode(unsigned isocode, void *client_data)
 
 static FontMapRec iso8859_9[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,iso8859_9_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,iso8859_9_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned short iso8859_10_tophalf[]=
@@ -368,9 +368,9 @@ static FontEncSimpleMapRec iso8859_10_to_unicode_map=
 
 static FontMapRec iso8859_10[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,0,
-     &iso8859_10_to_unicode_map,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,NULL,
+     &iso8859_10_to_unicode_map,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned
@@ -391,8 +391,8 @@ iso8859_15_to_unicode(unsigned isocode, void *client_data)
 
 static FontMapRec iso8859_15[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,iso8859_15_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,iso8859_15_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned short koi8_r_tophalf[]=
@@ -419,9 +419,9 @@ static FontEncSimpleMapRec koi8_r_to_unicode_map=
 
 static FontMapRec koi8_r[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,0,
-     &koi8_r_to_unicode_map,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,FontEncSimpleRecode,NULL,
+     &koi8_r_to_unicode_map,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 static unsigned 
@@ -453,8 +453,8 @@ koi8_ru_to_unicode(unsigned koicode, void *client_data)
 
 static FontMapRec koi8_ru[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,koi8_ru_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,koi8_ru_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 /* koi8-e, ISO-IR-111 or ECMA-Cyrillic */
@@ -478,8 +478,8 @@ koi8_e_to_unicode(unsigned koicode, void *client_data)
 
 static FontMapRec koi8_e[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,koi8_e_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,koi8_e_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 /* Koi8 unified */
@@ -507,8 +507,8 @@ koi8_uni_to_unicode(unsigned koicode, void *client_data)
 
 static FontMapRec koi8_uni[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,koi8_uni_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,koi8_uni_to_unicode,NULL,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 /* Ukrainian variant of Koi8-R; see RFC 2319 */
@@ -531,8 +531,8 @@ koi8_u_to_unicode(unsigned koicode, void *client_data)
 
 static FontMapRec koi8_u[]=
 {
-    {FONT_ENCODING_UNICODE,0,0,koi8_u_to_unicode,0,0,0},
-    {0,0,0,0,0,0,0}
+    {FONT_ENCODING_UNICODE,0,0,koi8_u_to_unicode,NULL,NULL,NULL},
+    {0,0,0,NULL,NULL,NULL,NULL,NULL}
 };
 
 /* Microsoft Symbol, which is only meaningful for TrueType fonts, is
@@ -540,41 +540,42 @@ static FontMapRec koi8_u[]=
    the glyph index before applying the cmap.  Lovely design. */
 
 static FontMapRec microsoft_symbol[]=
-{{FONT_ENCODING_TRUETYPE,3,0,0,0,0,0}, 
+{{FONT_ENCODING_TRUETYPE,3,0,NULL,NULL,NULL,NULL,NULL}, 
  /* You never know */
- {FONT_ENCODING_TRUETYPE,3,1,0,0,0,0}, 
- {0,0,0,0,0,0,0}};
+ {FONT_ENCODING_TRUETYPE,3,1,NULL,NULL,NULL,NULL,NULL}, 
+ {0,0,0,NULL,NULL,NULL,NULL,NULL}};
 
 static FontMapRec apple_roman[]=
-{{FONT_ENCODING_TRUETYPE,1,0,0,0,0,0}, {0,0,0,0,0,0,0}};
+{{FONT_ENCODING_TRUETYPE,1,0,NULL,NULL,NULL,NULL,NULL},
+ {0,0,0,NULL,NULL,NULL,NULL,NULL}};
 
 /* The data for recodings */
 
 /* For compatibility with X11R6.4.  Losers. */
-static char *iso8859_15_aliases[2]={"fcd8859-15",0};
+static char *iso8859_15_aliases[2]={"fcd8859-15",NULL};
 
 static FontEncRec initial_encodings[]=
 {
-    {"iso10646-1",0,256*256,0,iso10646,0,0,0}, /* Unicode */
-    {"iso8859-1",0,256,0,iso8859_1,0,0,0}, /* Latin 1 (West European) */
-    {"iso8859-2",0,256,0,iso8859_2,0,0,0}, /* Latin 2 (East European) */
-    {"iso8859-3",0,256,0,iso8859_3,0,0,0}, /* Latin 3 (South European) */
-    {"iso8859-4",0,256,0,iso8859_4,0,0,0}, /* Latin 4 (North European) */
-    {"iso8859-5",0,256,0,iso8859_5,0,0,0}, /* Cyrillic */
-    {"iso8859-6",0,256,0,iso8859_6,0,0,0}, /* Arabic */
-    {"iso8859-7",0,256,0,iso8859_7,0,0,0}, /* Greek */
-    {"iso8859-8",0,256,0,iso8859_8,0,0,0}, /* Hebrew */
-    {"iso8859-9",0,256,0,iso8859_9,0,0,0}, /* Latin 5 (Turkish) */
-    {"iso8859-10",0,256,0,iso8859_10,0,0,0}, /* Latin 6 (Nordic) */
-    {"iso8859-15",iso8859_15_aliases,256,0,iso8859_15,0,0,0}, /* Latin 9 */
-    {"koi8-r",0,256,0,koi8_r,0,0,0},       /* Russian */
-    {"koi8-ru",0,256,0,koi8_ru,0,0,0},     /* Ukrainian */
-    {"koi8-uni",0,256,0,koi8_uni,0,0,0},   /* Russian/Ukrainian/Bielorussian */
-    {"koi8-e",0,256,0,koi8_e,0,0,0},       /* ``European'' */
-    {"koi8-u",0,256,0,koi8_u,0,0,0},       /* Ukrainian too */
-    {"microsoft-symbol",0,256,0,microsoft_symbol,0,0,0},
-    {"apple-roman",0,256,0,apple_roman,0,0,0},
-    {0,0,0,0,0,0,0}
+    {"iso10646-1",NULL,256*256,0,iso10646,NULL,0,0}, /* Unicode */
+    {"iso8859-1",NULL,256,0,iso8859_1,NULL,0,0}, /* Latin 1 (West European) */
+    {"iso8859-2",NULL,256,0,iso8859_2,NULL,0,0}, /* Latin 2 (East European) */
+    {"iso8859-3",NULL,256,0,iso8859_3,NULL,0,0}, /* Latin 3 (South European) */
+    {"iso8859-4",NULL,256,0,iso8859_4,NULL,0,0}, /* Latin 4 (North European) */
+    {"iso8859-5",NULL,256,0,iso8859_5,NULL,0,0}, /* Cyrillic */
+    {"iso8859-6",NULL,256,0,iso8859_6,NULL,0,0}, /* Arabic */
+    {"iso8859-7",NULL,256,0,iso8859_7,NULL,0,0}, /* Greek */
+    {"iso8859-8",NULL,256,0,iso8859_8,NULL,0,0}, /* Hebrew */
+    {"iso8859-9",NULL,256,0,iso8859_9,NULL,0,0}, /* Latin 5 (Turkish) */
+    {"iso8859-10",NULL,256,0,iso8859_10,NULL,0,0}, /* Latin 6 (Nordic) */
+    {"iso8859-15",iso8859_15_aliases,256,0,iso8859_15,NULL,0,0}, /* Latin 9 */
+    {"koi8-r",NULL,256,0,koi8_r,NULL,0,0},       /* Russian */
+    {"koi8-ru",NULL,256,0,koi8_ru,NULL,0,0},     /* Ukrainian */
+    {"koi8-uni",NULL,256,0,koi8_uni,NULL,0,0},   /* Russian/Ukrainian/Bielorussian */
+    {"koi8-e",NULL,256,0,koi8_e,NULL,0,0},       /* ``European'' */
+    {"koi8-u",NULL,256,0,koi8_u,NULL,0,0},       /* Ukrainian too */
+    {"microsoft-symbol",NULL,256,0,microsoft_symbol,NULL,0,0},
+    {"apple-roman",NULL,256,0,apple_roman,NULL,0,0},
+    {NULL,NULL,0,0,NULL,NULL,0,0}
 };
 
 static FontEncPtr font_encodings=NULL;
@@ -613,7 +614,7 @@ FontEncFromXLFD(const char *name, int length)
     int len;
 
     if(length > MAXFONTNAMELEN - 1)
-        return 0;
+        return NULL;
 
     if(name == NULL)
         p = NULL;
@@ -625,13 +626,13 @@ FontEncFromXLFD(const char *name, int length)
         while(p >= name && *p != '-')
             p--;
         if(p <= name)
-            p = 0;
+            p = NULL;
     }
 
     /* now p either is null or points at the '-' before the charset registry */
     
     if(p == 0)
-        return 0;
+        return NULL;
     
     len = length - (p - name) - 1;
     memcpy(charset, p+1, len);
@@ -674,10 +675,10 @@ FontEncName(unsigned code, FontMapPtr mapping)
            (encoding->row_size != 0 &&
             (code/0x100 >= encoding->size || 
              (code&0xFF) >= encoding->row_size)))
-            return 0;
+            return NULL;
         return (*mapping->name)(code, mapping->client_data);
     } else
-        return 0;
+        return NULL;
 }
 
 FontEncPtr
@@ -741,7 +742,7 @@ FontEncLoad(const char *encoding_name, const char *filename)
     
     encoding = FontEncReallyLoad(encoding_name, filename);
     if (encoding == NULL) {
-        return 0;
+        return NULL;
     } else {
         char **alias;
         int found = 0;
