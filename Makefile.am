@@ -26,3 +26,9 @@ pkgconfig_DATA = fontenc.pc
 
 EXTRA_DIST = fontenc.pc.in autogen.sh
 
+.PHONY: ChangeLog
+
+ChangeLog:
+	git-log > ChangeLog
+
+dist-hook: ChangeLog
