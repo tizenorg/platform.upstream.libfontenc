@@ -789,7 +789,7 @@ error:
 }
 
 char*
-FontEncDirectory()
+FontEncDirectory(void)
 {
     static char* dir = NULL;
 
