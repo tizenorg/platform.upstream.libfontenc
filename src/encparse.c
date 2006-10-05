@@ -609,22 +609,25 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
             goto error;
         sm->row_size = encoding->row_size;
         if(first <= last) {
+            unsigned short *newmap;
+
             sm->first = first;
             sm->len=last-first+1;
-            sm->map = 
+            newmap = 
                 (unsigned short*)xalloc(sm->len * sizeof(unsigned short));
-            if(sm->map == NULL) {
+            if(newmap == NULL) {
                 xfree(sm);
                 mapping->client_data = sm = NULL;
                 goto error;
             }
+	    for(i=0; i < sm->len; i++)
+		newmap[i] = enc[first+i];
+	    sm->map = newmap;
         } else {
             sm->first = 0;
             sm->len = 0;
             sm->map = NULL;
         }
-        for(i=0; i < sm->len; i++)
-            sm -> map[i] = enc[first+i];
         install_mapping(encoding, mapping);
         mapping = NULL;
         first = 0xFFFF; last=0;
