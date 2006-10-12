@@ -24,14 +24,12 @@ SUBDIRS = src
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = fontenc.pc
 
-EXTRA_DIST = fontenc.pc.in autogen.sh
+EXTRA_DIST = fontenc.pc.in autogen.sh ChangeLog
 
-.PHONY: ChangeLog
-
-ChangeLog:
+CLEANFILES = ChangeLog
+ChangeLog: FORCE
 	git-log > ChangeLog
-
-dist-hook: ChangeLog
+FORCE:
 
 if LINT
 lint:
