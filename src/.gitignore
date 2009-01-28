@@ -1,6 +1,0 @@
-.deps
-.libs
-*.lo
-libfontenc.la
-Makefile
-Makefile.in
