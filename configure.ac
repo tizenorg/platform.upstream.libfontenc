@@ -37,11 +37,12 @@ AC_PROG_CC
 AC_PROG_LIBTOOL
 XORG_CWARNFLAGS
 
-encodingsdir=${libdir}/X11/fonts/encodings
-AC_ARG_WITH(encodingsdir, AC_HELP_STRING([--with-encodingsdir=<pathname>],
-	[Path to font encodings]), [encodingsdir="$withval"])
-ENCODINGSDIR="$encodingsdir"
-AC_SUBST(ENCODINGSDIR)
+# Require X.Org's font util macros 1.1 or later for XORG_FONTROOTDIR
+m4_ifndef([XORG_FONT_MACROS_VERSION],
+	  [m4_fatal([must install X.Org font-util 1.1 or later before running autoconf/autogen])])
+XORG_FONT_MACROS_VERSION(1.1)
+
+XORG_FONTSUBDIR([ENCODINGSDIR], [encodingsdir], [encodings])
 
 # zlib
 
