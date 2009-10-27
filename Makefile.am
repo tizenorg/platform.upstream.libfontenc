@@ -24,8 +24,7 @@ SUBDIRS = src
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = fontenc.pc
 
-EXTRA_DIST = fontenc.pc.in ChangeLog
-MAINTAINERCLEANFILES = ChangeLog
+EXTRA_DIST = fontenc.pc.in 
 
 .PHONY: ChangeLog
 
