@@ -51,9 +51,6 @@ AC_CHECK_LIB(z, gzclose)
 
 # Check for dependencies
 PKG_CHECK_MODULES(FONTENC, xproto)
-FONTENC_CFLAGS="$CWARNFLAGS $FONTENC_CFLAGS"
-AC_SUBST(FONTENC_CFLAGS)
-AC_SUBST(FONTENC_LIBS)
 
 dnl Allow checking code with lint, sparse, etc.
 XORG_WITH_LINT

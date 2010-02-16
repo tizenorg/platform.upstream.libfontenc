@@ -5,7 +5,9 @@ libfontenc_la_SOURCES = \
          fontenc.c \
 	 fontencI.h
 
-AM_CFLAGS = @FONTENC_CFLAGS@
+AM_CFLAGS = \
+	$(FONTENC_CFLAGS) \
+	$(CWARNFLAGS)
 
 FONTENCDIR=@ENCODINGSDIR@
 FONTENCDEFS = -DFONT_ENCODINGS_DIRECTORY=\"$(FONTENCDIR)/encodings.dir\"
