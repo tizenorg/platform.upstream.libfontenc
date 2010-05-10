@@ -28,13 +28,6 @@ THE SOFTWARE.
 #include <strings.h>
 #endif
 
-#ifndef FONTENC_NO_LIBFONT
-
-#include <X11/fonts/fontmisc.h>           /* defines xalloc and friends */
-#include <X11/fonts/fntfilst.h>
-
-#else
-
 #include <stdlib.h>
 #define xalloc(n) malloc(n)
 #define xrealloc(p, n) realloc(p, n)
@@ -43,8 +36,6 @@ THE SOFTWARE.
 #define TRUE 1
 #define MAXFONTNAMELEN 1024
 #define MAXFONTFILENAMELEN 1024
-
-#endif /* FONTENC_NO_FONTFILE */
 
 #include <X11/fonts/fontenc.h>
 #include "fontencI.h"

@@ -34,13 +34,6 @@ THE SOFTWARE.
 #include <strings.h>
 #endif
 
-#ifndef FONTENC_NO_LIBFONT
-
-#include <X11/fonts/fntfilio.h>
-#include <X11/fonts/fntfilst.h>
-
-#else
-
 #include <stdlib.h>
 #define xalloc(n) malloc(n)
 #define xrealloc(p, n) realloc(p, n)
@@ -54,8 +47,6 @@ typedef gzFile FontFilePtr;
 
 #define MAXFONTFILENAMELEN 1024
 #define MAXFONTNAMELEN 1024
-
-#endif
 
 #include <X11/fonts/fontenc.h>
 #include "fontencI.h"

@@ -12,8 +12,7 @@ AM_CFLAGS = \
 FONTENCDIR=@ENCODINGSDIR@
 FONTENCDEFS = -DFONT_ENCODINGS_DIRECTORY=\"$(FONTENCDIR)/encodings.dir\"
 
-INCLUDES = -I$(top_srcdir)/include \
-	   -DFONTENC_NO_LIBFONT $(FONTENCDEFS)
+INCLUDES = -I$(top_srcdir)/include $(FONTENCDEFS)
 
 
 libfontenc_la_LIBADD = @FONTENC_LIBS@
