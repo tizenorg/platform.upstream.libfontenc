@@ -35,9 +35,6 @@ THE SOFTWARE.
 #endif
 
 #include <stdlib.h>
-#define xalloc(n) malloc(n)
-#define xrealloc(p, n) realloc(p, n)
-#define xfree(p) free(p)
 
 #include "zlib.h"
 typedef gzFile FontFilePtr;
@@ -425,14 +422,14 @@ setCode(unsigned from, unsigned to, unsigned row_size,
         return 0;
     if(*encsize == 0) {
         *encsize = (index < 256) ? 256 : 0x10000;
-        *enc = (unsigned short*)xalloc((*encsize) * sizeof(unsigned short));
+        *enc = (unsigned short*)malloc((*encsize) * sizeof(unsigned short));
         if(*enc == NULL) {
             *encsize = 0;
             return 1;
         }
     } else if(*encsize <= index) {
         *encsize = 0x10000;
-        if((newenc = (unsigned short*)xrealloc(enc, *encsize))==NULL)
+        if((newenc = (unsigned short*)realloc(enc, *encsize))==NULL)
             return 1;
         *enc = newenc;
     }
@@ -488,10 +485,10 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
     case EOF_LINE:
         goto error;
     case STARTENCODING_LINE:
-        encoding = (FontEncPtr)xalloc(sizeof(FontEncRec));
+        encoding = (FontEncPtr)malloc(sizeof(FontEncRec));
         if(encoding == NULL)
             goto error;
-        encoding->name = (char*)xalloc(strlen(keyword_value)+1);
+        encoding->name = (char*)malloc(strlen(keyword_value)+1);
         if(encoding->name == NULL)
             goto error;
         strcpy(encoding->name, keyword_value);
@@ -511,7 +508,7 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
     case EOF_LINE: goto done;
     case ALIAS_LINE:
         if(numaliases < MAXALIASES) {
-            aliases[numaliases] = (char*)xalloc(strlen(keyword_value)+1);
+            aliases[numaliases] = (char*)malloc(strlen(keyword_value)+1);
             if(aliases[numaliases] == NULL)
                 goto error;
             strcpy(aliases[numaliases], keyword_value);
@@ -530,7 +527,7 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
         if(headerOnly)
             goto done;
         if(!strcasecmp(keyword_value, "unicode")) {
-            mapping = (FontMapPtr)xalloc(sizeof(FontMapRec));
+            mapping = (FontMapPtr)malloc(sizeof(FontMapRec));
             if(mapping == NULL)
                 goto error;
             mapping->type = FONT_ENCODING_UNICODE;
@@ -542,7 +539,7 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
             mapping->next = NULL;
             goto mapping;
         } else if(!strcasecmp(keyword_value, "cmap")) {
-            mapping = (FontMapPtr)xalloc(sizeof(FontMapRec));
+            mapping = (FontMapPtr)malloc(sizeof(FontMapRec));
             if(mapping == NULL)
                 goto error;
             mapping->type = FONT_ENCODING_TRUETYPE;
@@ -554,7 +551,7 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
             mapping->next = NULL;
             goto mapping;
         } else if(!strcasecmp(keyword_value, "postscript")) {
-            mapping = (FontMapPtr)xalloc(sizeof(FontMapRec));
+            mapping = (FontMapPtr)malloc(sizeof(FontMapRec));
             if(mapping == NULL)
                 goto error;
             mapping->type = FONT_ENCODING_POSTSCRIPT;
@@ -592,7 +589,7 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
         mapping->recode = FontEncSimpleRecode;
         mapping->name = FontEncUndefinedName;
         mapping->client_data = sm =
-            (FontEncSimpleMapPtr)xalloc(sizeof(FontEncSimpleMapRec));
+            (FontEncSimpleMapPtr)malloc(sizeof(FontEncSimpleMapRec));
         if(sm == NULL)
             goto error;
         sm->row_size = encoding->row_size;
@@ -602,9 +599,9 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
             sm->first = first;
             sm->len=last-first+1;
             newmap = 
-                (unsigned short*)xalloc(sm->len * sizeof(unsigned short));
+                (unsigned short*)malloc(sm->len * sizeof(unsigned short));
             if(newmap == NULL) {
-                xfree(sm);
+                free(sm);
                 mapping->client_data = sm = NULL;
                 goto error;
             }
@@ -674,19 +671,19 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
         mapping->recode = FontEncUndefinedRecode;
         mapping->name = FontEncSimpleName;
         mapping->client_data = sn =
-            (FontEncSimpleNamePtr)xalloc(sizeof(FontEncSimpleNameRec));
+            (FontEncSimpleNamePtr)malloc(sizeof(FontEncSimpleNameRec));
         if(sn == NULL)
             goto error;
         if(first > last) {
-            xfree(sn);
+            free(sn);
             mapping->client_data = sn = NULL;
             goto error;
         }
         sn->first = first;
         sn->len = last - first + 1;
-        sn->map = (char**)xalloc(sn->len*sizeof(char*));
+        sn->map = (char**)malloc(sn->len*sizeof(char*));
         if(sn->map == NULL) {
-            xfree(sn);
+            free(sn);
             mapping->client_data = sn = NULL;
             goto error;
         }
@@ -700,14 +697,14 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
         if(value1 >= 0x10000) goto string_mapping;
         if(namsize == 0) {
             namsize = (value1) < 256 ? 256 : 0x10000;
-            nam = (char**)xalloc(namsize * sizeof(char*));
+            nam = (char**)malloc(namsize * sizeof(char*));
             if(nam == NULL) {
                 namsize=0;
                 goto error;
             }
         } else if(namsize <= value1) {
             namsize = 0x10000;
-            if((newnam = (char**)xrealloc(nam, namsize)) == NULL)
+            if((newnam = (char**)realloc(nam, namsize)) == NULL)
                 goto error;
             nam = newnam;
         }
@@ -724,7 +721,7 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
                 nam[i]=NULL;
             last = value1;
         }
-        nam[value1] = (char*)xalloc(strlen(keyword_value)+1);
+        nam[value1] = (char*)malloc(strlen(keyword_value)+1);
         if(nam[value1] == NULL) {
             goto error;
         }
@@ -735,12 +732,12 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
     }
 
   done:
-    if(encsize) xfree(enc); encsize=0; enc = NULL;
-    if(namsize) xfree(nam); namsize=0; nam = NULL; /* don't free entries! */
+    if(encsize) free(enc); encsize=0; enc = NULL;
+    if(namsize) free(nam); namsize=0; nam = NULL; /* don't free entries! */
 
     encoding->aliases=NULL;
     if(numaliases) {
-        encoding->aliases = (char**)xalloc((numaliases+1)*sizeof(char*));
+        encoding->aliases = (char**)malloc((numaliases+1)*sizeof(char*));
         if(encoding->aliases == NULL)
             goto error;
         for(i=0; i<numaliases; i++)
@@ -751,30 +748,30 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
     return encoding;
 
 error:
-    if(encsize) xfree(enc); encsize=0;
+    if(encsize) free(enc); encsize=0;
     if(namsize) {
         for(i = first; i <= last; i++)
             if(nam[i])
-                xfree(nam[i]);
-        xfree(nam);
+                free(nam[i]);
+        free(nam);
         namsize = 0;
     }
     if(mapping) {
-        if(mapping->client_data) xfree(mapping->client_data);
-        xfree(mapping);
+        if(mapping->client_data) free(mapping->client_data);
+        free(mapping);
     }
     if(encoding) {
 	FontMapPtr nextmap;
-	if (encoding->name) xfree(encoding->name);
+	if (encoding->name) free(encoding->name);
 	for (mapping = encoding->mappings; mapping; mapping = nextmap) {
-	    if (mapping->client_data) xfree(mapping->client_data);
+	    if (mapping->client_data) free(mapping->client_data);
 	    nextmap = mapping->next;
-	    xfree(mapping);
+	    free(mapping);
 	}
-	xfree(encoding);
+	free(encoding);
     }
     for(i = 0; i < numaliases; i++)
-        xfree(aliases[i]);
+        free(aliases[i]);
     /* We don't need to free sn and sm as they handled locally in the body.*/
     return NULL;
 }
@@ -938,11 +935,11 @@ FontEncIdentify(const char *fileName)
         for(alias = encoding->aliases; *alias; alias++)
             numaliases++;
 
-    names = (char**)xalloc((numaliases+2)*sizeof(char*));
+    names = (char**)malloc((numaliases+2)*sizeof(char*));
     if(names == NULL) {
         if(encoding->aliases)
-            xfree(encoding->aliases);
-        xfree(encoding);
+            free(encoding->aliases);
+        free(encoding);
         return NULL;
     }
 
@@ -953,8 +950,8 @@ FontEncIdentify(const char *fileName)
         *name = *alias;
 
     *name = NULL;
-    xfree(encoding->aliases);
-    xfree(encoding);
+    free(encoding->aliases);
+    free(encoding);
 
     return names;
 }

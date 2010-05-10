@@ -29,9 +29,7 @@ THE SOFTWARE.
 #endif
 
 #include <stdlib.h>
-#define xalloc(n) malloc(n)
-#define xrealloc(p, n) realloc(p, n)
-#define xfree(p) free(p)
+
 #define FALSE 0
 #define TRUE 1
 #define MAXFONTNAMELEN 1024
@@ -755,7 +753,7 @@ FontEncLoad(const char *encoding_name, const char *filename)
             char *new_name;
             int numaliases = 0;
             
-            new_name = xalloc(strlen(encoding_name) + 1);
+            new_name = malloc(strlen(encoding_name) + 1);
             if(new_name == NULL)
                 return NULL;
             strcpy(new_name, encoding_name);
@@ -763,14 +761,14 @@ FontEncLoad(const char *encoding_name, const char *filename)
                 for(alias = encoding->aliases; *alias; alias++)
                     numaliases++;
             }
-            new_aliases = (char**)xalloc((numaliases+2)*sizeof(char*));
+            new_aliases = (char**)malloc((numaliases+2)*sizeof(char*));
             if(new_aliases == NULL) {
-                xfree(new_name);
+                free(new_name);
                 return NULL;
             }
             if(encoding->aliases) {
                 memcpy(new_aliases, encoding->aliases, numaliases*sizeof(char*));
-                xfree(encoding->aliases);
+                free(encoding->aliases);
             }
             new_aliases[numaliases] = new_name;
             new_aliases[numaliases+1] = NULL;
@@ -917,9 +915,9 @@ FontMapReverse(FontMapPtr mapping)
 
   bail:
     if(map)
-        xfree(map);
+        free(map);
     if(reverse)
-        xfree(reverse);
+        free(reverse);
     return NULL;
 }
 
@@ -934,8 +932,8 @@ FontMapReverseFree(FontMapReversePtr delendum)
 
     for(i = 0; i < FONTENC_SEGMENTS; i++)
         if(map[i] != NULL)
-            xfree(map[i]);
+            free(map[i]);
 
-    xfree(map);
+    free(map);
     return;
 }
