@@ -761,7 +761,7 @@ FontEncLoad(const char *encoding_name, const char *filename)
                 for(alias = encoding->aliases; *alias; alias++)
                     numaliases++;
             }
-            new_aliases = (char**)malloc((numaliases+2)*sizeof(char*));
+            new_aliases = malloc((numaliases+2)*sizeof(char*));
             if(new_aliases == NULL) {
                 free(new_name);
                 return NULL;
