@@ -20,9 +20,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-/* $XdotOrg: xc/lib/font/fontfile/fontenc.c,v 1.3 2005/07/03 07:01:00 daniels Exp $ */
-/* $XFree86: xc/lib/font/fontfile/fontenc.c,v 1.15 2003/02/20 03:25:19 dawes Exp $ */
-
 /* Backend-independent encoding code */
 
 #include <string.h>

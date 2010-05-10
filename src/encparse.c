@@ -1,4 +1,3 @@
-/* $XdotOrg: lib/fontenc/src/encparse.c,v 1.6 2006/04/10 16:15:12 alanc Exp $ */
 /*
 Copyright (c) 1998-2001 by Juliusz Chroboczek
 
@@ -20,8 +19,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-
-/* $XFree86: xc/lib/font/fontfile/encparse.c,v 1.20tsi Exp $ */
 
 /* Parser for encoding files */
 
