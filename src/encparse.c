@@ -745,20 +745,19 @@ error:
     if(encsize) free(enc); encsize=0;
     if(namsize) {
         for(i = first; i <= last; i++)
-            if(nam[i])
-                free(nam[i]);
+            free(nam[i]);
         free(nam);
         namsize = 0;
     }
     if(mapping) {
-        if(mapping->client_data) free(mapping->client_data);
+        free(mapping->client_data);
         free(mapping);
     }
     if(encoding) {
 	FontMapPtr nextmap;
-	if (encoding->name) free(encoding->name);
+	free(encoding->name);
 	for (mapping = encoding->mappings; mapping; mapping = nextmap) {
-	    if (mapping->client_data) free(mapping->client_data);
+	    free(mapping->client_data);
 	    nextmap = mapping->next;
 	    free(mapping);
 	}
@@ -930,8 +929,7 @@ FontEncIdentify(const char *fileName)
 
     names = malloc((numaliases+2)*sizeof(char*));
     if(names == NULL) {
-        if(encoding->aliases)
-            free(encoding->aliases);
+        free(encoding->aliases);
         free(encoding);
         return NULL;
     }

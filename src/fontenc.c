@@ -913,10 +913,8 @@ FontMapReverse(FontMapPtr mapping)
     return reverse;
 
   bail:
-    if(map)
-        free(map);
-    if(reverse)
-        free(reverse);
+    free(map);
+    free(reverse);
     return NULL;
 }
 
@@ -930,8 +928,7 @@ FontMapReverseFree(FontMapReversePtr delendum)
         return;
 
     for(i = 0; i < FONTENC_SEGMENTS; i++)
-        if(map[i] != NULL)
-            free(map[i]);
+	free(map[i]);
 
     free(map);
     return;
