@@ -753,10 +753,9 @@ FontEncLoad(const char *encoding_name, const char *filename)
             char *new_name;
             int numaliases = 0;
             
-            new_name = malloc(strlen(encoding_name) + 1);
+            new_name = strdup(encoding_name);
             if(new_name == NULL)
                 return NULL;
-            strcpy(new_name, encoding_name);
             if(encoding->aliases) {
                 for(alias = encoding->aliases; *alias; alias++)
                     numaliases++;

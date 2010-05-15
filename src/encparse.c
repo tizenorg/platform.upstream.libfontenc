@@ -488,10 +488,9 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
         encoding = malloc(sizeof(FontEncRec));
         if(encoding == NULL)
             goto error;
-        encoding->name = malloc(strlen(keyword_value)+1);
+        encoding->name = strdup(keyword_value);
         if(encoding->name == NULL)
             goto error;
-        strcpy(encoding->name, keyword_value);
         encoding->size = 256;
         encoding->row_size = 0;
         encoding->mappings = NULL;
@@ -508,10 +507,9 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
     case EOF_LINE: goto done;
     case ALIAS_LINE:
         if(numaliases < MAXALIASES) {
-            aliases[numaliases] = malloc(strlen(keyword_value)+1);
+            aliases[numaliases] = strdup(keyword_value);
             if(aliases[numaliases] == NULL)
                 goto error;
-            strcpy(aliases[numaliases], keyword_value);
             numaliases++;
         }
         goto no_mapping;
@@ -718,11 +716,10 @@ parseEncodingFile(FontFilePtr f, int headerOnly)
                 nam[i]=NULL;
             last = value1;
         }
-        nam[value1] = malloc(strlen(keyword_value)+1);
+        nam[value1] = strdup(keyword_value);
         if(nam[value1] == NULL) {
             goto error;
         }
-        strcpy(nam[value1], keyword_value);
         goto string_mapping;
 
     default: goto string_mapping; /* ignore unknown lines */
@@ -781,10 +778,9 @@ FontEncDirectory(void)
     if(dir == NULL) {
         char *c = getenv("FONT_ENCODINGS_DIRECTORY");
         if(c) {
-            dir = malloc(strlen(c) + 1);
+            dir = strdup(c);
             if(!dir)
                 return NULL;
-            strcpy(dir, c);
         } else {
             dir = FONT_ENCODINGS_DIRECTORY;
         }
