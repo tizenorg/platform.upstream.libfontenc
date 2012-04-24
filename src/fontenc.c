@@ -279,6 +279,8 @@ iso8859_7_to_unicode(unsigned isocode, void *client_data)
         return 0x02BC;
     else if(isocode==0xAF)
         return 0x2015;
+    else if(isocode==0xD2) /* unassigned */
+        return 0;
     else if(isocode>=0xB4)
         return isocode-0xA0+0x0370;
     else
