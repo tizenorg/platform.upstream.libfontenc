@@ -6,6 +6,7 @@ Summary:        X
 Url:            http://www.x.org
 Group:          System/Libraries
 Source:         %{name}-%{version}.tar.bz2
+Source1001: 	libfontenc.manifest
 BuildRequires:  autoconf
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(xorg-macros)
@@ -24,6 +25,7 @@ font encoding library development package
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure --disable-static \
@@ -39,6 +41,7 @@ make %{?_smp_mflags}
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %doc COPYING
 %{_libdir}/libfontenc.so.1
@@ -46,6 +49,7 @@ make %{?_smp_mflags}
 
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %dir %{_includedir}/X11
 %dir %{_includedir}/X11/fonts
