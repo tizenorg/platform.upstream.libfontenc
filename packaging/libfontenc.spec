@@ -1,5 +1,5 @@
 Name:           libfontenc
-Version:        1.1.1
+Version:        1.1.2
 Release:        3
 License:        MIT
 Summary:        X
@@ -11,6 +11,7 @@ BuildRequires:  autoconf
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(xorg-macros)
 BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(fontutil)
 
 %description
 font encoding library
@@ -28,7 +29,7 @@ font encoding library development package
 cp %{SOURCE1001} .
 
 %build
-%configure --disable-static \
+%autogen --disable-static \
     --with-encodingsdir=%{_datadir}/fonts/X11/encodings
 
 make %{?_smp_mflags}
